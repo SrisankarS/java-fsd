@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+ <div aling="center">
+    <H3>Find User By UserName</H3>
+    <br>
+    
+    <form action="#" th:action="@{/find}" th:object="${userdetail}" method ="post">
+         <table border="0" cellpadding="10">
+            <tr>
+              <td>UserName:</td>
+                <td> <input type="text" th:field="*{username}" class="form-control"/>
+                  </td>
+                   <tr>
+                    <td colspan="2"><button type="submit">Search</button> </td>
+                </tr>
+            </table>    
+    </form>
+    <table border="1" cellpadding="10">
+   <thead>
+     <tr>
+        <th>UserId</th>
+        <th>UserName</th>
+        <th>Email Id</th>
+        <th>PhoneNo</th>
+        <th>Product Purchased</th>
+        <th>Purchase Date</th>
+        <th>Category</th>
+        <th>Create Date</th>
+        <th>Last Update Date</th>
+      </tr>
+     </thead>
+     <tbody>
+       <tr th:each="userdetails : ${listUsers}">
+          <td th:text="${userdetails.userId}">UserId</td>
+          <td th:text="${userdetails.username}">UserName</td>
+          <td th:text="${userdetails.emailId}">email Id</td>
+          <td th:text="${userdetails.phone}">PhoneNo</td>
+          <td th:text="${userdetails.productPerchased}">Product Purchased</td>
+          <td th:text="${userdetails.perchaseDate}">Purchase Date</td>
+          <td th:text="${userdetails.category}">Category</td>
+          <td th:text="${userdetails.createDate}">Create Date</td>
+          <td th:text="${userdetails.lastUpdateDate}">Last Update Date</td>
+        </tr>
+     </tbody>
+     </table>
+ </div>
+</body>
+</html>
