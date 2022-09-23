@@ -1,0 +1,28 @@
+﻿<h1 *ngIf="currentUser">Hi {{currentUser.firstName}}!</h1>
+<p>You're logged in as admin to Employee Management</p>
+<h3>All Employees:</h3>
+<div class="table-responsive-sm">
+    <table class="table">
+        <thead>
+            <tr>
+                <td colspan="3"><button type="button" class="btn btn-secondary" (click)="addNewEmployee()">Add New Employee</button></td>
+            </tr>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees">
+                <th scope="row">{{employee.id}}</th>
+                <td>{{employee.firstName}}</td>
+                <td>{{employee.lastName}}</td>
+                <td>{{employee.email}}</td>
+                <td><button type="button" class="btn btn-secondary" (click)="viewEmployeeDetails(employee.id)">View Details</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
