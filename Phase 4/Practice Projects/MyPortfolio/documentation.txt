@@ -1,0 +1,43 @@
+=================================================
+
+-- github pages - ng deploy --base-href=/portfolio/
+
+---------------- Installation -----------------------------
+
+- Update latest node - nodejs
+
+- Update latest angular CLI global package to Angular 11+ with cli 11.0.6 +
+
+- Copy complete packages to your project directory
+
+- Install npm with command 'npm install'
+
+- Compile project with command 'ng serve -o'
+
+- Build project with command 'ng build --prod --aot'
+
+===================================================
+
+---------------- Theme Customization ---------------
+
+Open app-config.ts file and changes theme, themeType
+according to below Demos
+________________________________________________________
+
+### DEMO ###	### THEME ###	 ### THEME TYPE ###
+
+DEMO 1		vertical	 default
+DEMO 2		vertical	 dark
+DEMO 3		vertical	 light
+
+==================================================
+
+DEMO 4		collapsed	 default
+DEMO 5		collapsed	 dark
+DEMO 6		collapsed	 light
+
+==================================================
+
+DEMO 7		horizontal	 default
+DEMO 8		horizontal	 dark
+DEMO 9		horizontal	 light
