@@ -1,0 +1,56 @@
+﻿<h1 *ngIf="currentUser">Hi {{currentUser.name}}!</h1>
+<p>You're logged in as {{currentUser.admin ? 'admin' : 'citizen'}} to Aadhaar Management</p>
+<div *ngIf="currentUser.admin">
+    <div class="row row-cols-1 row-cols-md-3">
+        <div class="col mb-4" *ngFor="let pendingCard of this.pendingCards">
+            <div class="card" [ngClass]="{'border-dark': pendingCard.status === 'pending', 'border-info': pendingCard.status !== 'pending'}" style="width: 18rem;">
+                <img class="card-img-top" src="assets/aadhaar-card.jpg" alt="Aadhaar image">
+                <div class="card-body">
+                    <h5 class="card-title">{{pendingCard.status === 'pending' ? 'New Card Approval' : 'Duplicate Card Issue'}}</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Name: {{pendingCard.user.name}}</li>
+                        <li class="list-group-item">Address: {{pendingCard.user.address}}</li>
+                        <li class="list-group-item">Dob: {{pendingCard.user.dob}}</li>
+                        <li class="list-group-item">Email: {{pendingCard.user.email}}</li>
+                        <li class="list-group-item">gender: {{pendingCard.user.gender}}</li>
+                    </ul>
+                    <div class="m-1">
+                        <button (click)="approveAadhaar(pendingCard.id)" type="button" class="btn btn-outline-primary">
+                            Approve
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="!currentUser.admin">
+    <h3>Your Aadhaar your identity</h3>
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="assets/aadhaar-card.jpg" alt="Aadhaar image">
+        <div class="card-body">
+            <h5 class="card-title">Welcome to Aadhaar management</h5>
+            <h6 *ngIf="this.card && this.card.aadhaarNumber" class="card-subtitle mb-2 text-muted">Card number
+                : {{this.card.aadhaarNumber}}</h6>
+            <h6 *ngIf="this.card && this.card.status == 'pending'" class="card-subtitle mb-2 text-muted">Card request has been
+                submitted, awaiting approval</h6>
+            <h6 *ngIf="this.card && this.card.status == 'duplicate'" class="card-subtitle mb-2 text-muted">Duplicate card request has
+                been submitted, awaiting approval</h6>
+            <div class="card-body">
+                <div class="m-1">
+                    <button (click)="applyAadhaar()" type="button" class="btn btn-outline-primary">Apply for Aadhaar
+                    </button>
+                </div>
+                <div class="m-1">
+                    <button (click)="updateAadhaar()" type="button" class="btn btn-outline-primary">Update Aadhaar
+                        details
+                    </button>
+                </div>
+                <div class="m-1">
+                    <button (click)="duplicateAadhaar()" type="button" class="btn btn-outline-primary">Issue Duplicate
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
